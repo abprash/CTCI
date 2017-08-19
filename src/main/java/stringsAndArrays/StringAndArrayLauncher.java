@@ -144,51 +144,7 @@ public class StringAndArrayLauncher {
 			return false;
 	}
 	
-	public static String urlify1(char[] testWords){
-		//did not work yet
-		char[] temp = new char[17];
-		String s1 = "mr john smith    ";
-		for(int i=0; i<s1.length(); i++){
-			temp[i] = s1.charAt(i);
-		}
-		int lastLetterPosition = 0;
-		//find where the last word ends in the string
-		for(int i=s1.length()-1; i>=0; i-- ){
-			if(s1.charAt(i) != ' '){
-				lastLetterPosition = i;
-				break;
-			}
-		}
-		//two loops
-		for(int r =s1.length()-1; r>=0; r-- ){
-			for(int l=lastLetterPosition; l>=0; l--){
-				if((temp[l] != ' ') && (temp[r] == ' ')){
-					temp[r] = temp[l];
-					temp[l] = ' ';
-					r--;
-					l--;
-				}
-				else if(temp[l] == ' ' && r == ' '){
-					//we have encountered a space
-					//fill it with %20
-					temp[r] = '0';
-					temp[r-1] = '2';
-					temp[r-2] = '%';
-					r=r-3;
-					l--;
-				}
-				/*else if(temp[j] == ' ' && temp[i] != ' '){
-					
-				}
-				else if(temp[j] != ' ' && temp[i] != ' '){
-					
-				}*/
-			}
-		}
-		System.out.println(Arrays.toString(temp));
-		return s1;
-		
-	}
+	
 	
 	public static char[] urlify2(char[] testWords){
 		//did not work yet
@@ -237,6 +193,8 @@ public class StringAndArrayLauncher {
 		System.out.println("-->"+Arrays.toString(testWords));
 		return testWords;
 	}
+	
+	
 
 }
 
