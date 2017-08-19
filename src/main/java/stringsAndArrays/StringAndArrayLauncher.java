@@ -8,13 +8,16 @@ import java.util.Set;
 public class StringAndArrayLauncher {
 	
 	public static void main(String[] args){
-		System.out.println(urlify1(new char[12]));
+		//System.out.println(urlify1(new char[12]));
 		String s1 = "mr john %20smith    ";
 		char[] testWords = new char[s1.length()];
 		for(int i=0; i<s1.length(); i++){
 			testWords[i] = s1.charAt(i);
 		}
-		urlify2(testWords);
+		//urlify2(testWords);
+		String temp = "taco cat";
+		String temp2 = "Taco cat";
+		System.out.println(palindromePermutation1(temp2));
 	}
 	
 	//Problem 1.1
@@ -194,6 +197,44 @@ public class StringAndArrayLauncher {
 		return testWords;
 	}
 	
+	public static boolean palindromePermutation1(String test){
+		
+		//
+		int[] countArray = new int[52];
+		if(test == null)
+			return false;
+		if(test.length() == 0 || test.isEmpty())
+			return false;
+		if(test.length() == 1)
+			return true;
+		int oddNumberCounter = 0;
+		for(int i=0; i<test.length(); i++){
+			int pos = 0;
+			char c = test.charAt(i);
+			//store the count
+			//get the ascii position
+			
+			//find if its a cap or small letter
+			if(Character.isLetter(c)){
+				if(Character.isUpperCase(c))
+					pos = c - 'A';
+				else
+					pos = c - 'a' + 26;
+				//countArray - [ABCD...XYZabc...xyz]
+				System.out.println(pos);
+				countArray[pos]++;
+			}
+		}
+		//checking phase
+		for(int i=0; i<countArray.length; i++){
+			if(countArray[i] %2 != 0)
+				oddNumberCounter++;
+			if(oddNumberCounter > 1)
+				return false;
+		}
+		return true;
+		
+	}
 	
 
 }
