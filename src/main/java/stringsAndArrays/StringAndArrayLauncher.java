@@ -324,7 +324,7 @@ public class StringAndArrayLauncher {
 			return null;
 		if (test.length() <= 1)
 			return invalidString;
-		StringBuilder sb = new StringBuilder();
+		
 		StringBuilder ans = new StringBuilder();
 		int letterPointer = 0;
 		int countPointer = 1;
@@ -340,21 +340,31 @@ public class StringAndArrayLauncher {
 		char currentChar = test.charAt(letterPointer);
 		while (countPointer < test.length()) {
 			// keep parsing the number
+			//System.out.println("LP "+letterPointer);
+			//System.out.println("CountP "+countPointer);
 			if (Character.isDigit(test.charAt(countPointer))) {
 				// if its 1
 				count.append(Character.toString(test.charAt(countPointer)));
 				countPointer++;
+				currentChar = test.charAt(letterPointer);
+				System.out.println("counts "+count);
 			} else {
-				System.out.println(new String(count));
-				for (int i = 0; i < Integer.parseInt(new String(count)); i++) {
-					sb.append(currentChar);
+				int totalOccurences = Integer.parseInt(new String(count));
+				System.out.println(totalOccurences);
+				StringBuilder temp = new StringBuilder();
+				for (int i = 0; i < totalOccurences; i++) {
+					temp.append(currentChar);
 				}
-				ans.append(sb);
+				ans.append(temp);
+				System.out.println(ans);
 				// change the pos of letter and count pointers
-				countPointer++;
+				//countPointer++;
 				letterPointer = countPointer + 1;
+				countPointer = letterPointer + 1;
 				count = new StringBuilder();
 				if(letterPointer >= test.length())
+					break;
+				if(countPointer >= test.length())
 					break;
 				currentChar = test.charAt(letterPointer);
 			}
