@@ -20,7 +20,7 @@ public class StringAndArrayLauncher {
 		// System.out.println(palindromePermutation1(temp2));
 		// System.out.println(oneAway1(temp, temp2));
 		// System.out.println(basicStringDecompressor(basicStringCompressor("compressoroooooooooooooo")));
-		System.out.println(basicStringDecompressor("a1b1c5a23"));
+		System.out.println(basicStringDecompressor("a1b1c5a3"));
 	}
 
 	// Problem 1.1
@@ -366,10 +366,18 @@ public class StringAndArrayLauncher {
 					break;
 				if(digitPointer >= test.length())
 					break;*/
-				currentChar = test.charAt(letterPointer);
-				
+				currentChar = test.charAt(letterPointer);	
 			}
-
+			if(digitPointer == test.length()-1){
+				count.append(Character.toString(test.charAt(digitPointer)));
+				int totalOccurences = Integer.parseInt(new String(count));
+				System.out.println(totalOccurences);
+				StringBuilder temp = new StringBuilder();
+				for (int i = 0; i < totalOccurences; i++) {
+					temp.append(currentChar);
+				}
+				ans.append(temp);
+			}
 		}
 		return new String(ans);
 	}
