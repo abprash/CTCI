@@ -20,7 +20,7 @@ public class StringAndArrayLauncher {
 		// System.out.println(palindromePermutation1(temp2));
 		// System.out.println(oneAway1(temp, temp2));
 		// System.out.println(basicStringDecompressor(basicStringCompressor("compressoroooooooooooooo")));
-		System.out.println(basicStringDecompressor("a1b1c5a3"));
+		System.out.println(basicStringDecompressor("a1b1c5a23"));
 	}
 
 	// Problem 1.1
@@ -327,10 +327,10 @@ public class StringAndArrayLauncher {
 		
 		StringBuilder ans = new StringBuilder();
 		int letterPointer = 0;
-		int countPointer = 1;
+		int digitPointer = 1;
 		if (!Character.isLetter(test.charAt(letterPointer)))
 			return invalidString;
-		if (!Character.isDigit(test.charAt(countPointer)))
+		if (!Character.isDigit(test.charAt(digitPointer)))
 			return invalidString;
 		// int count = 0;
 		// count =
@@ -338,14 +338,14 @@ public class StringAndArrayLauncher {
 
 		StringBuilder count = new StringBuilder();
 		char currentChar = test.charAt(letterPointer);
-		while (countPointer < test.length()) {
+		while (digitPointer < test.length()) {
 			// keep parsing the number
 			//System.out.println("LP "+letterPointer);
 			//System.out.println("CountP "+countPointer);
-			if (Character.isDigit(test.charAt(countPointer))) {
+			if (Character.isDigit(test.charAt(digitPointer))) {
 				// if its 1
-				count.append(Character.toString(test.charAt(countPointer)));
-				countPointer++;
+				count.append(Character.toString(test.charAt(digitPointer)));
+				digitPointer++;
 				currentChar = test.charAt(letterPointer);
 				System.out.println("counts "+count);
 			} else {
@@ -359,14 +359,15 @@ public class StringAndArrayLauncher {
 				System.out.println(ans);
 				// change the pos of letter and count pointers
 				//countPointer++;
-				letterPointer = countPointer + 1;
-				countPointer = letterPointer + 1;
+				letterPointer = digitPointer;
+				digitPointer = letterPointer + 1;
 				count = new StringBuilder();
-				if(letterPointer >= test.length())
+				/*if(letterPointer >= test.length())
 					break;
-				if(countPointer >= test.length())
-					break;
+				if(digitPointer >= test.length())
+					break;*/
 				currentChar = test.charAt(letterPointer);
+				
 			}
 
 		}
