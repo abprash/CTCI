@@ -20,7 +20,7 @@ public class StringAndArrayLauncher {
 		// System.out.println(palindromePermutation1(temp2));
 		// System.out.println(oneAway1(temp, temp2));
 		// System.out.println(basicStringDecompressor(basicStringCompressor("compressoroooooooooooooo")));
-		System.out.println(basicStringDecompressor("a1b1c5a3"));
+		//System.out.println(basicStringDecompressor("a1b1c5a3"));
 	}
 
 	// Problem 1.1
