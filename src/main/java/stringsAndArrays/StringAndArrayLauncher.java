@@ -22,7 +22,9 @@ public class StringAndArrayLauncher {
 		// System.out.println(basicStringDecompressor(basicStringCompressor("compressoroooooooooooooo")));
 		//System.out.println(basicStringDecompressor("a1b1c5a3"));
 		char[][] matrix = new char[][] {{'1','2','3'},{'4','5','6'},{'7','8','9'}};
-		rightRotateMatrix(matrix);
+		rightRotateOddMatrixInPlace(matrix);
+		int[][] matrix2 = {{1,2,3},{4,5,6},{7,8,9}};
+		leftRotateMatrix(matrix2);
 	}
 
 	// Problem 1.1
@@ -401,7 +403,37 @@ public class StringAndArrayLauncher {
 				ans[j][rows - 1 - i] = matrix[i][j];
 			}
 		}
+		System.out.println(Arrays.toString(matrix[0])+"\n"+Arrays.toString(matrix[1])+"\n"+Arrays.toString(matrix[2]));
+		System.out.println("-----------");
 		System.out.println(Arrays.toString(ans[0])+"\n"+Arrays.toString(ans[1])+"\n"+Arrays.toString(ans[2]));
+		System.out.println("===========");
+		return 3;
+	}
+	
+	public static int rightRotateOddMatrixInPlace(char[][] matrix){
+		//get the rows and columns number
+		//it will be a square matrix
+		//if not square return error
+		//uses extra space
+		if(matrix == null)
+			return 1;
+		if(matrix.length != matrix[0].length)
+			return 2;
+		//can't handle even squares yet
+		if((matrix.length %2) != 1)
+			return 3;
+		int rows = matrix.length;
+		int columns = matrix.length;
+		boolean exit = false;
+		char[][] ans = new char[rows][columns];
+		int center = rows / 2 ;
+		
+		//we generate the sequence
+		//then we start swapping
+		System.out.println(Arrays.toString(matrix[0])+"\n"+Arrays.toString(matrix[1])+"\n"+Arrays.toString(matrix[2]));
+		System.out.println("-----------");
+		//sSystem.out.println(Arrays.toString(ans[0])+"\n"+Arrays.toString(ans[1])+"\n"+Arrays.toString(ans[2]));
+		//System.out.println("===========");
 		return 3;
 	}
 	
@@ -415,10 +447,13 @@ public class StringAndArrayLauncher {
 		int[][] ans = new int[rows][columns];
 		for(int i=0; i<rows; i++){
 			for(int j=0; j<columns; j++){
-				ans[j][rows-i] = matrix[i][j];
+				ans[j][i] = matrix[i][j];
 			}
 		}
+		System.out.println(Arrays.toString(matrix[0])+"\n"+Arrays.toString(matrix[1])+"\n"+Arrays.toString(matrix[2]));
+		System.out.println("-----------");
 		System.out.println(Arrays.toString(ans[0])+"\n"+Arrays.toString(ans[1])+"\n"+Arrays.toString(ans[2]));
+		System.out.println("===========");
 		return "OK";
 	}
 
