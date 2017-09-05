@@ -398,7 +398,7 @@ public class StringAndArrayLauncher {
 		char[][] ans = new char[rows][columns];
 		for(int i=0; i<rows; i++){
 			for(int j=0; j<columns; j++){
-				ans[j][i] = matrix[i][j];
+				ans[j][rows - 1 - i] = matrix[i][j];
 			}
 		}
 		System.out.println(Arrays.toString(ans[0])+"\n"+Arrays.toString(ans[1])+"\n"+Arrays.toString(ans[2]));
@@ -415,7 +415,7 @@ public class StringAndArrayLauncher {
 		int[][] ans = new int[rows][columns];
 		for(int i=0; i<rows; i++){
 			for(int j=0; j<columns; j++){
-				ans[j][i] = matrix[i][j];
+				ans[j][rows-i] = matrix[i][j];
 			}
 		}
 		System.out.println(Arrays.toString(ans[0])+"\n"+Arrays.toString(ans[1])+"\n"+Arrays.toString(ans[2]));
