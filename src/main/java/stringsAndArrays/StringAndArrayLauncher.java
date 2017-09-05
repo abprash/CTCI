@@ -21,6 +21,8 @@ public class StringAndArrayLauncher {
 		// System.out.println(oneAway1(temp, temp2));
 		// System.out.println(basicStringDecompressor(basicStringCompressor("compressoroooooooooooooo")));
 		//System.out.println(basicStringDecompressor("a1b1c5a3"));
+		char[][] matrix = new char[][] {{'1','2','3'},{'4','5','6'},{'7','8','9'}};
+		rightRotateMatrix(matrix);
 	}
 
 	// Problem 1.1
@@ -380,6 +382,44 @@ public class StringAndArrayLauncher {
 			}
 		}
 		return new String(ans);
+	}
+	
+	public static int rightRotateMatrix(char[][] matrix){
+		//get the rows and columns number
+		//it will be a square matrix
+		//if not square return error
+		//uses extra space
+		if(matrix == null)
+			return 1;
+		if(matrix.length != matrix[0].length)
+			return 2;
+		int rows = matrix.length;
+		int columns = matrix.length;
+		char[][] ans = new char[rows][columns];
+		for(int i=0; i<rows; i++){
+			for(int j=0; j<columns; j++){
+				ans[j][i] = matrix[i][j];
+			}
+		}
+		System.out.println(Arrays.toString(ans[0])+"\n"+Arrays.toString(ans[1])+"\n"+Arrays.toString(ans[2]));
+		return 3;
+	}
+	
+	public static String leftRotateMatrix(int[][] matrix){
+		if(matrix == null)
+			return "NULL";
+		if(matrix.length != matrix[0].length)
+			return "NOT A SQUARE MATRIX";
+		int rows = matrix.length;
+		int columns = matrix.length;
+		int[][] ans = new int[rows][columns];
+		for(int i=0; i<rows; i++){
+			for(int j=0; j<columns; j++){
+				ans[j][i] = matrix[i][j];
+			}
+		}
+		System.out.println(Arrays.toString(ans[0])+"\n"+Arrays.toString(ans[1])+"\n"+Arrays.toString(ans[2]));
+		return "OK";
 	}
 
 }
