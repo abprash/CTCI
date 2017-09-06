@@ -428,6 +428,15 @@ public class StringAndArrayLauncher {
 		char[][] ans = new char[rows][columns];
 		int center = rows / 2 ;
 		
+		//the key (i think here is )
+		//the directions
+		//Right -> Down -> Left -> Up
+		//we start at a point and keep going R,D,L and U in the same order (while always checking for validity)
+		
+		//we have to find the starting points
+		
+		
+		
 		//we generate the sequence
 		//then we start swapping
 		System.out.println(Arrays.toString(matrix[0])+"\n"+Arrays.toString(matrix[1])+"\n"+Arrays.toString(matrix[2]));
