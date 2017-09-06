@@ -21,10 +21,10 @@ public class StringAndArrayLauncher {
 		// System.out.println(oneAway1(temp, temp2));
 		// System.out.println(basicStringDecompressor(basicStringCompressor("compressoroooooooooooooo")));
 		//System.out.println(basicStringDecompressor("a1b1c5a3"));
-		char[][] matrix = new char[][] {{'1','2','3'},{'4','5','6'},{'7','8','9'}};
-		rightRotateOddMatrixInPlace(matrix);
+		char[][] matrix = new char[][] {{'1','2','3','4'},{'4','5','6','7'},{'7','8','9','0'},{'1','3','5','7'}};
+		rightRotateMatrixInPlace(matrix);
 		int[][] matrix2 = {{1,2,3},{4,5,6},{7,8,9}};
-		leftRotateMatrix(matrix2);
+		//leftRotateMatrix(matrix2);
 	}
 
 	// Problem 1.1
@@ -410,7 +410,7 @@ public class StringAndArrayLauncher {
 		return 3;
 	}
 	
-	public static int rightRotateOddMatrixInPlace(char[][] matrix){
+	public static int rightRotateMatrixInPlace(char[][] matrix){
 		//get the rows and columns number
 		//it will be a square matrix
 		//if not square return error
@@ -419,30 +419,47 @@ public class StringAndArrayLauncher {
 			return 1;
 		if(matrix.length != matrix[0].length)
 			return 2;
-		//can't handle even squares yet
-		if((matrix.length %2) != 1)
-			return 3;
 		int rows = matrix.length;
 		int columns = matrix.length;
 		boolean exit = false;
 		char[][] ans = new char[rows][columns];
 		int center = rows / 2 ;
 		
-		//the key (i think here is )
+		/*//the key (i think here is )
 		//the directions
 		//Right -> Down -> Left -> Up
 		//we start at a point and keep going R,D,L and U in the same order (while always checking for validity)
+		*/
 		
-		//we have to find the starting points
+		//Solution in the book
 		
-		
-		
-		//we generate the sequence
-		//then we start swapping
-		System.out.println(Arrays.toString(matrix[0])+"\n"+Arrays.toString(matrix[1])+"\n"+Arrays.toString(matrix[2]));
+		//i understood this
+		for(int layer=0; layer<rows/2; layer++){
+			//layer = 0 -> the outermost layer
+			
+			//these variables control where to start and stop the layers
+			int first = layer;
+			int last = rows - 1 - layer;
+			System.out.println("layer: "+layer);
+			for(int i=first; i< last; i++){
+
+				int offset = i - layer;
+				System.out.println("offset: "+offset);
+				System.out.println("first :"+first+"last: "+last);
+				char top = matrix[first][i];
+				//left to top
+				matrix[first][i] = matrix[last - offset][first];
+				//bottom to left
+				matrix[last - offset][first] = matrix[last][last - offset];
+				//right to bottom
+				matrix[last][last - offset] = matrix[i][last];
+				//top to right
+				matrix[i][last] = top;
+			}
+		}
+		for(int i=0; i<rows; i++)
+			System.out.println(Arrays.toString(matrix[i])+"\n");
 		System.out.println("-----------");
-		//sSystem.out.println(Arrays.toString(ans[0])+"\n"+Arrays.toString(ans[1])+"\n"+Arrays.toString(ans[2]));
-		//System.out.println("===========");
 		return 3;
 	}
 	
