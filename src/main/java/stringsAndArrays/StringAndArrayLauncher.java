@@ -1,7 +1,9 @@
 package stringsAndArrays;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
 
@@ -25,7 +27,8 @@ public class StringAndArrayLauncher {
 		//rightRotateMatrixInPlace(matrix);
 		int[][] matrix2 = {{1,2,3},{4,-9,6},{7,8,0}};
 		//leftRotateMatrix(matrix2);
-		zeroMatrix(matrix2);
+		//zeroMatrix(matrix2);
+		System.out.println(isRotation("waterbottle","erbottlewat"));
 	}
 
 	// Problem 1.1
@@ -526,20 +529,23 @@ public class StringAndArrayLauncher {
 	}
 	
 	public static boolean isSubstring(String needle, String haystack){
-		if(needle == null || haystack == null)
-			return false;
-		if(haystack.length() < needle.length())
-			return false;
-		if(haystack.contains(needle))
+		if(haystack.indexOf(needle) >= 0)
 			return true;
-		return false;
+		else
+			return false;
 	}
 	
-	public static isRotation(String s1, String s2){
+	public static boolean isRotation(String s1, String s2){
 		//to verify is s1 or s2 is a rotation of the other
 		if(s1 == null || s2 == null)
 			return false;
-		if(s1.length() != s2.length())
+		// start at the first char
+		// 
+		int l1 = s1.length();
+		int l2 = s2.length();
+		if(l1 != l2)
 			return false;
+		
+		return isSubstring(s2,s1+s1);
 	}
 }
