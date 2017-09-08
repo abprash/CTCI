@@ -23,9 +23,9 @@ public class StringAndArrayLauncher {
 		//System.out.println(basicStringDecompressor("a1b1c5a3"));
 		char[][] matrix = new char[][] {{'1','2','3','4'},{'4','5','6','7'},{'7','8','9','0'},{'1','3','5','7'}};
 		//rightRotateMatrixInPlace(matrix);
-		int[][] matrix2 = {{1,2,3},{4,5,6},{7,8,9}};
+		int[][] matrix2 = {{1,2,3},{4,-9,6},{7,8,0}};
 		//leftRotateMatrix(matrix2);
-		
+		zeroMatrix(matrix2);
 	}
 
 	// Problem 1.1
@@ -410,7 +410,25 @@ public class StringAndArrayLauncher {
 		System.out.println("===========");
 		return 3;
 	}
-	
+	public static String leftRotateMatrix(int[][] matrix){
+		if(matrix == null)
+			return "NULL";
+		if(matrix.length != matrix[0].length)
+			return "NOT A SQUARE MATRIX";
+		int rows = matrix.length;
+		int columns = matrix.length;
+		int[][] ans = new int[rows][columns];
+		for(int i=0; i<rows; i++){
+			for(int j=0; j<columns; j++){
+				ans[j][i] = matrix[i][j];
+			}
+		}
+		System.out.println(Arrays.toString(matrix[0])+"\n"+Arrays.toString(matrix[1])+"\n"+Arrays.toString(matrix[2]));
+		System.out.println("-----------");
+		System.out.println(Arrays.toString(ans[0])+"\n"+Arrays.toString(ans[1])+"\n"+Arrays.toString(ans[2]));
+		System.out.println("===========");
+		return "OK";
+	}
 	public static int rightRotateMatrixInPlace(char[][] matrix){
 		//get the rows and columns number
 		//it will be a square matrix
@@ -465,27 +483,45 @@ public class StringAndArrayLauncher {
 	}
 	
 	//doLeftRotateMatrixInPlace
-	
-	
-	
-	public static String leftRotateMatrix(int[][] matrix){
+	public static void zeroMatrix(int[][] matrix){
+		//have a 1D array equal to number of rows and cols
+		//M length array and N length array where matrix - MxN
+		//when we encounter a 0, mark the rows and cols with a 1
+		//first iteration done
+		
+		//second iteration
+		//make every row and column 0.
+		// when we encounter a 1
+		
 		if(matrix == null)
-			return "NULL";
-		if(matrix.length != matrix[0].length)
-			return "NOT A SQUARE MATRIX";
+			return;
+		if(matrix.length == 0 || matrix[0].length == 0)
+			return;
+		int cols = matrix[0].length;
 		int rows = matrix.length;
-		int columns = matrix.length;
-		int[][] ans = new int[rows][columns];
+		int[] rowArray = new int[rows];
+		int[] colArray = new int[cols];
+		System.out.println("Print the original array");
+		for(int i=0; i<matrix.length; i++)
+			System.out.println(Arrays.toString(matrix[i]));
 		for(int i=0; i<rows; i++){
-			for(int j=0; j<columns; j++){
-				ans[j][i] = matrix[i][j];
+			for(int j=0; j<cols; j++){
+				if(matrix[i][j] == 0){
+					rowArray[i] = 1;
+					colArray[j] = 1;
+				}
 			}
 		}
-		System.out.println(Arrays.toString(matrix[0])+"\n"+Arrays.toString(matrix[1])+"\n"+Arrays.toString(matrix[2]));
-		System.out.println("-----------");
-		System.out.println(Arrays.toString(ans[0])+"\n"+Arrays.toString(ans[1])+"\n"+Arrays.toString(ans[2]));
+		for(int i=0; i<rows; i++){
+			for(int j=0; j<cols; j++){
+				if(rowArray[i] == 1)
+					matrix[i][j] = 0;
+				if(colArray[j] == 1)
+					matrix[i][j] = 0;
+			}
+		}
 		System.out.println("===========");
-		return "OK";
+		for(int i=0; i<matrix.length; i++)
+			System.out.println(Arrays.toString(matrix[i]));
 	}
-
 }
