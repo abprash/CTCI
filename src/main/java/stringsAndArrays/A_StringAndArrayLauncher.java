@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
 
-public class StringAndArrayLauncher {
+public class A_StringAndArrayLauncher {
 
 	public static void main(String[] args) {
 		// System.out.println(urlify1(new char[12]));
