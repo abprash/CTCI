@@ -524,4 +524,22 @@ public class StringAndArrayLauncher {
 		for(int i=0; i<matrix.length; i++)
 			System.out.println(Arrays.toString(matrix[i]));
 	}
+	
+	public static boolean isSubstring(String needle, String haystack){
+		if(needle == null || haystack == null)
+			return false;
+		if(haystack.length() < needle.length())
+			return false;
+		if(haystack.contains(needle))
+			return true;
+		return false;
+	}
+	
+	public static isRotation(String s1, String s2){
+		//to verify is s1 or s2 is a rotation of the other
+		if(s1 == null || s2 == null)
+			return false;
+		if(s1.length() != s2.length())
+			return false;
+	}
 }
