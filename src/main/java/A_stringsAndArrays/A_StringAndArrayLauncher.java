@@ -1,4 +1,4 @@
-package stringsAndArrays;
+package A_stringsAndArrays;
 
 import java.util.ArrayList;
 import java.util.Arrays;

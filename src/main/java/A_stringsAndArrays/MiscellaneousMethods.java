@@ -1,4 +1,4 @@
-package stringsAndArrays;
+package A_stringsAndArrays;
 
 public class MiscellaneousMethods {
 
