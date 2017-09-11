@@ -20,6 +20,7 @@ public class LinkedListLauncher {
 		//linkedList5.traversal();
 		//System.out.println(removeDups(linkedList5));
 		removeDupsWithNoExtraSpace(linkedList5);
+		//linkedList5.traversal();
 	}
 	//CTCI Linked list problems
 	
@@ -36,33 +37,28 @@ public class LinkedListLauncher {
 	}
 	
 	public static MyLinkedList removeDupsWithNoExtraSpace(MyLinkedList list){
-		if(list == null)
-			return null;
+		/*if(list == null)
+			return null;*/
 		MyLinkedList.Node p1 = list.head;
-		if(p1.next == null)
-			return list;
+		/*if(p1.next == null)
+			return list;*/
 		MyLinkedList.Node p2 = p1.next;
-		if(p2.next == null && p1.data == p2.data)
-			return list;
-		MyLinkedList.Node p3 = p2.next;
+		System.out.println(p1.data);
+		System.out.println(p2.data);
 		while(p1 != null){
-			while(p3 != null){
-				if(p1.data != p3.data){
-					p2 = p2.next;
-					p3 = p3.next;
-				}
-				else{ 
-					if(p3.next != null)
-						p2.next = p3.next;
-				else
-					p2.next = null;
-				p3 = p3.next;
-				}
+			while(p2.next != null){
+					if(p2.next.data == p1.data){
+						p2.next = p2.next.next;
+					}
+					else
+						p2 = p2.next;
 			}
 			p1 = p1.next;
 		}
+		System.out.println("--");
 		list.traversal();
 		return list;
+		
 	}
 	
 	
