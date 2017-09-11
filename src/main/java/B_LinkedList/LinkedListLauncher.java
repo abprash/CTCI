@@ -19,8 +19,10 @@ public class LinkedListLauncher {
 		//linkedList5.deleteNodesHavingBiggerRightValue();
 		//linkedList5.traversal();
 		//System.out.println(removeDups(linkedList5));
-		removeDupsWithNoExtraSpace(linkedList5);
+		//removeDupsWithNoExtraSpace(linkedList5);
 		//linkedList5.traversal();
+		System.out.println(findKthToLast(4,linkedList5));
+		
 	}
 	//CTCI Linked list problems
 	
@@ -58,9 +60,42 @@ public class LinkedListLauncher {
 		System.out.println("--");
 		list.traversal();
 		return list;
-		
 	}
 	
+	//return Kth to last
+	//not the intended solution
+	/*public static int findKthToLast(int k, MyLinkedList list){
+		//considerations
+		//k should be less than the length of the list
+		//find length of list
+		//one pass
+		//second pass
+		//subtract l - k and go until there and return
+		//find length
+		int length = 0;
+		if(list == null)
+			return 0;
+		MyLinkedList.Node curr = list.head;
+		while(curr != null){
+			length++;
+			curr = curr.next;
+		}
+		if(k > length)
+			return 0;
+		if(k == length)
+			return list.head.data;
+		curr = list.head;
+		for(int i=0; i<(length-k); i++){
+			curr = curr.next;
+		}
+		//
+		return curr.data;
+	}*/
+	public static int findKthToLast(int k, MyLinkedList list){
+		if(list == null)
+			return -9999;
+		
+	}
 	
 	
 
