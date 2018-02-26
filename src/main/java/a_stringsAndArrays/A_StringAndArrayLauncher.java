@@ -23,7 +23,7 @@ public class A_StringAndArrayLauncher {
 		// System.out.println(oneAway1(temp, temp2));
 		// System.out.println(basicStringDecompressor(basicStringCompressor("compressoroooooooooooooo")));
 		//System.out.println(basicStringDecompressor("a1b1c5a3"));
-		char[][] matrix = new char[][] {{'1','2','3','4'},{'4','5','6','7'},{'7','8','9','0'},{'1','3','5','7'}};
+		
 		//rightRotateMatrixInPlace(matrix);
 		int[][] matrix2 = {{1,2,3},{4,-9,6},{7,8,0}};
 		//leftRotateMatrix(matrix2);

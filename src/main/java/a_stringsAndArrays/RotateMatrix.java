@@ -5,6 +5,96 @@ import java.util.Arrays;
 public class RotateMatrix {
 
 	
+	//rotate matrix in place
+	public static void rotateMatrixInPlace(char[][] matrix){
+		//algo
+		//assuming its an nxn matrix
+		//right rotate by 90 degrees
+		
+		System.out.println("Print the original array");
+		for (int i = 0; i < matrix.length; i++)
+			System.out.println(Arrays.toString(matrix[i]));
+		
+		//Step 1: transpose
+		
+		for(int i = 0; i< matrix.length; i++){
+			for(int j = i; j< matrix[0].length; j++){
+				char temp = matrix[i][j];
+				matrix[i][j] = matrix[j][i];
+				matrix[j][i] = temp;
+			}
+		}
+		
+		System.out.println("Transposed ===============");
+		for (int i = 0; i < matrix.length; i++)
+			System.out.println(Arrays.toString(matrix[i]));
+		
+		int col2 = matrix[0].length-1;
+		int col1 = 0; 
+	
+		//Step 2 :then keep swapping the extreme cols and keep coming in
+		while(col1 < col2){
+			//int col2 = matrix[0].length -1 - col1;
+			if(col1 != col2){
+				//swap col1 and col2 values
+				for(int i=0; i<matrix.length; i++){
+					char temp = matrix[i][col1];
+					matrix[i][col1] = matrix[i][col2];
+					matrix[i][col2] = temp;
+				}
+			}
+			col1++;
+			col2--;
+		}
+		
+		System.out.println("Rotated ===============");
+		for (int i = 0; i < matrix.length; i++)
+			System.out.println(Arrays.toString(matrix[i]));
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	public static void leftRotateInPlace(char[][] matrix){
+
+		if(matrix == null || matrix.length == 0)
+			return;
+		//transpose
+		for(int i=0; i<matrix.length; i++){
+			for(int j=i; j<matrix[0].length; j++){
+				char temp = matrix[i][j];
+				matrix[i][j] = matrix[j][i];
+				matrix[j][i] = temp;
+			}
+		}
+
+		//now rotate row wise
+		int row1 = 0, row2 = matrix.length-1;
+		while(row1 < row2){
+			//swap the row entries
+			for(int i=0; i<matrix[0].length; i++){
+				char temp = matrix[row1][i];
+				matrix[row1][i] = matrix[row2][i];
+				matrix[row2][i] = temp;
+			}
+			row1++;
+			row2--;
+
+		}	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	public static int rightRotateMatrix(char[][] matrix){
 		//get the rows and columns number
 		//it will be a square matrix
@@ -102,4 +192,8 @@ public class RotateMatrix {
 	
 	//doLeftRotateMatrixInPlace
 	
+	public static void main(String[] args){
+		char[][] matrix = new char[][] {{'1','2','3','4'},{'4','5','6','7'},{'7','8','9','0'},{'1','3','5','7'}};
+		rotateMatrixInPlace(matrix);
+	}
 }

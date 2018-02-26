@@ -4,8 +4,56 @@ import java.util.Arrays;
 
 public class ZeroMatrix {
 
+	// algo with no extra space
+	//AC ALGO:
+	//1. Keep booleans for firstRow and firstCol in case they are 0
+	//2. in first pass, set the top of the col and first of the row to 0 of that particular 0 element.
+	//3. In the next pass, iterate again thro the matrix, from 1 to end, and 1 to end in both row and col. and check the particular top and first of the row
+		//if it is 0. if so, change the curr element to 0.
+	//finally check, if the firstRow and firstCol variables are true.
+	//if they are true, set them to zeros.
 	
-	
+	public static void zeroMatrix2(int[][] matrix) {
+		//
+		System.out.println("Print the original array");
+		for (int i = 0; i < matrix.length; i++)
+			System.out.println(Arrays.toString(matrix[i]));
+		boolean fr = false, fc = false;
+		for (int i = 0; i < matrix.length; i++) {
+			for (int j = 0; j < matrix[0].length; j++) {
+				if (matrix[i][j] == 0) {
+					if (i == 0)
+						fr = true;
+					if (j == 0)
+						fc = true;
+					matrix[0][j] = 0;
+					matrix[i][0] = 0;
+				}
+			}
+		}
+		for (int i = 1; i < matrix.length; i++) {
+			for (int j = 1; j < matrix[0].length; j++) {
+				if (matrix[i][0] == 0 || matrix[0][j] == 0) {
+					matrix[i][j] = 0;
+				}
+			}
+		}
+		if (fr) {
+			for (int j = 0; j < matrix[0].length; j++) {
+				matrix[0][j] = 0;
+			}
+		}
+		if (fc) {
+			for (int i = 0; i < matrix.length; i++) {
+				matrix[i][0] = 0;
+			}
+		}
+
+		System.out.println("===========");
+		for (int i = 0; i < matrix.length; i++)
+			System.out.println(Arrays.toString(matrix[i]));
+	}
+
 	public static void zeroMatrix(int[][] matrix) {
 		// have a 1D array equal to number of rows and cols
 		// M length array and N length array where matrix - MxN
@@ -48,84 +96,8 @@ public class ZeroMatrix {
 			System.out.println(Arrays.toString(matrix[i]));
 	}
 
-	// algo with no extra space
-	public static void zeroMatrix2(int[][] matrix) {
-		System.out.println("Print the original array");
-		for (int i = 0; i < matrix.length; i++)
-			System.out.println(Arrays.toString(matrix[i]));
-		if (matrix == null || matrix.length == 0)
-			return;
-		boolean firstRow = false, firstCol = false;
-		for (int i = 0; i < matrix.length; i++) {
-			for (int j = 0; j < matrix[0].length; j++) {
-				if (matrix[i][j] == 0) {
-					// set the top most cell in that col to be 0,
-					// set the left most cell in that row to be 0
-					
-					//for the non zero rows and cols
-					if(j != 0)
-						matrix[0][j] = 0;
-					if(i != 0)
-						matrix[i][0] = 0;
-					
-					//now for the zero rows and cols
-					if(i == 0 || j == 0){
-						if(i == 0 && j == 0){
-							firstRow = true;
-							firstCol = true;
-						}
-						if(i == 0)
-							firstRow = true;
-						if(j == 0)
-							firstCol = true;
-					}
-				}
-				
-			}
-		}
-
-		for (int i = 0; i < matrix.length; i++) {
-			for (int j = 0; j < matrix[0].length; j++) {
-				if ((i == 0 || j == 0) && matrix[i][j] == 0) {
-					if(j == 0)
-						makeRowZero(matrix, i);
-					if(i == 0)
-						makeColZero(matrix, j);
-					
-				}
-			}
-		}
-		
-		//now if firstRow or firstCol is true
-		//make them zero
-		if(firstRow){
-			for(int i=0; i<matrix[0].length; i++)
-				matrix[0][i] = 0;
-		}
-		
-		//similarly for first col
-		if(firstCol){
-			for(int j=0; j<matrix.length; j++)
-				matrix[j][0] = 0;
-		}
-		
-		System.out.println("===========");
-		for (int i = 0; i < matrix.length; i++)
-			System.out.println(Arrays.toString(matrix[i]));
-	}
-
-	public static void makeRowZero(int[][] matrix, int row) {
-		for(int i=0; i<matrix[0].length; i++)
-			matrix[row][i] = 0;
-	}
-
-	public static void makeColZero(int[][] matrix, int col) {
-		for(int i=0; i<matrix.length; i++)
-			matrix[i][col] = 0;
-	}
-	
-	public static void main(String[] args){
-		int[][] matrix2 = {{0,9,1},{4,1,1},{0,1,1}};
+	public static void main(String[] args) {
+		int[][] matrix2 = { { 0, 9, 1 }, { 4, 1, 1 }, { 0, 1, 1 } };
 		zeroMatrix2(matrix2);
 	}
 }
