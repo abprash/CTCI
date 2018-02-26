@@ -1,7 +1,13 @@
 package a_stringsAndArrays;
 
 public class PalindromePermutation {
+
 	
+	public static void main(String[] args){
+		String s1 = "tact oca";//true
+		String s2 = "tact ocaw";//false
+		System.out.println(palindromePermutation(s1));
+	}
 	public static boolean palindromePermutation1(String test) {
 
 		//
@@ -41,21 +47,26 @@ public class PalindromePermutation {
 
 	}
 	
-	public static boolean palindromePermutation(String s1, String s2){
-		if(s1 == null || s2 == null || s1.length() == 0 || s2.length() == 0)
+	public static boolean palindromePermutation(String s1){
+		if(s1 == null || s1.length() == 0 )
 			return false;
 		//get the xor value
 		//if both strings length come to even -> result == 0
 		//if both strings length are odd, -> result == 1
 		
-		int res = (int) s1.charAt(0);
-		for(int i=1; i< s1.length(); i++)
-			res ^= (int) s1.charAt(i);
+		int res = s1.charAt(0);
+		int total = 1;
+		for(int i=1; i< s1.length(); i++){
+			if(s1.charAt(i) != ' '){
+				System.out.println(res);
+				res = res ^ s1.charAt(i);
+				total++;
+			}
+		}
+		System.out.println(res+","+total);
 		
-		for(int i=0; i< s2.length(); i++)
-			res ^= (int) s2.charAt(i);
-		int total = s1.length()+s2.length();
-		if(total%2 == 0 && res == 0 || total%2 == 1 && res == 1)
+		
+		if(total%2 == 0 && res == 0 || total%2 == 1 && res != 0)
 			return true;
 		
 		return false;
