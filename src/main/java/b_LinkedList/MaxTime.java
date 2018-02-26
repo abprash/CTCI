@@ -1,4 +1,4 @@
-package B_LinkedList;
+package b_LinkedList;
 import java.util.Arrays;
 import java.util.Random;
 

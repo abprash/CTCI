@@ -1,4 +1,4 @@
-package B_LinkedList;
+package b_LinkedList;
 
 public class SwapNodes {
 	public static void main(String[] args)

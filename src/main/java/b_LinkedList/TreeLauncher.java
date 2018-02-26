@@ -1,4 +1,4 @@
-package B_LinkedList;
+package b_LinkedList;
 
 import java.util.Collections;
 import java.util.Comparator;
