@@ -90,10 +90,7 @@ public class RotateMatrix {
 	
 	
 	
-	
-	
-	
-	
+	//****************************************************************
 	
 	public static int rightRotateMatrix(char[][] matrix){
 		//get the rows and columns number
