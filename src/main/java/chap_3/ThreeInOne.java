@@ -1,4 +1,4 @@
-package chap3;
+package chap_3;
 
 public class ThreeInOne {
 
